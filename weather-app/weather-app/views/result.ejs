@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= locationName %> — Weather</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <a href="/" class="back-link">&larr; New search</a>
+
+    <h1><%= locationName %></h1>
+
+    <section class="current-weather">
+      <div class="current-icon"><%= current.icon %></div>
+      <div class="current-details">
+        <p class="current-temp"><%= current.temperature %>&deg;C</p>
+        <p class="current-desc"><%= current.description %></p>
+        <p class="current-wind">Wind speed: <%= current.windspeed %> km/h</p>
+      </div>
+    </section>
+
+    <h2>5-Day Forecast</h2>
+    <div class="forecast-grid">
+      <% dailyForecast.forEach(day => { %>
+        <div class="forecast-card">
+          <p class="forecast-date">
+            <%= new Date(day.date).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }) %>
+          </p>
+          <p class="forecast-icon"><%= day.icon %></p>
+          <p class="forecast-desc"><%= day.description %></p>
+          <p class="forecast-temps"><%= day.max %>&deg; / <%= day.min %>&deg;</p>
+        </div>
+      <% }) %>
+    </div>
+
+    <footer>
+      <p>Data provided by the free <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo API</a>.</p>
+    </footer>
+  </div>
+</body>
+</html>

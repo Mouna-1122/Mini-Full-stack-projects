@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crypto Price Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div class="bg-glow glow-1"></div>
+  <div class="bg-glow glow-2"></div>
+
+  <div class="container">
+    <div class="hero">
+      <div class="badge">₹ INR &middot; Live Market Data</div>
+      <h1><span class="gradient-text">Crypto</span> Price Tracker</h1>
+      <p class="subtitle">Search any cryptocurrency to see its current price and market data, priced in Indian Rupees.</p>
+    </div>
+
+    <form action="/crypto" method="GET" class="search-form">
+      <span class="search-icon">🔍</span>
+      <input
+        type="text"
+        name="coin"
+        placeholder="Search bitcoin, eth, dogecoin..."
+        autocomplete="off"
+        required
+      />
+      <button type="submit">Search</button>
+    </form>
+
+    <% if (error) { %>
+      <p class="error-message">⚠️ <%= error %></p>
+    <% } %>
+
+    <% if (topCoins && topCoins.length > 0) { %>
+      <h2><span class="fire">🔥</span> Top 10 by Market Cap</h2>
+      <div class="coin-list">
+        <% topCoins.forEach((coin, i) => { %>
+          <a class="coin-row" href="/crypto?coin=<%= coin.id %>" style="animation-delay: <%= i * 0.04 %>s">
+            <span class="coin-rank">#<%= i + 1 %></span>
+            <img src="<%= coin.image %>" alt="<%= coin.name %>" class="coin-icon" />
+            <span class="coin-name"><%= coin.name %> <span class="coin-symbol"><%= coin.symbol %></span></span>
+            <span class="coin-price"><%= coin.price %></span>
+            <span class="coin-change <%= coin.isPositive ? 'positive' : 'negative' %>">
+              <%= coin.isPositive ? '▲' : '▼' %> <%= coin.change24h %>
+            </span>
+          </a>
+        <% }) %>
+      </div>
+    <% } %>
+
+    <footer>
+      <p>Data provided by the free <a href="https://www.coingecko.com/en/api" target="_blank" rel="noopener noreferrer">CoinGecko API</a> &middot; no API key required</p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,1 +1,4 @@
-country capital/solution.js
+node_modules/
+.env
+solution.js
+*.log

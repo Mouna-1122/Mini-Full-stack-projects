@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= name %> — Price</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div class="bg-glow glow-1"></div>
+  <div class="bg-glow glow-2"></div>
+
+  <div class="container">
+    <a href="/" class="back-link">&larr; New search</a>
+
+    <div class="coin-header">
+      <img src="<%= image %>" alt="<%= name %>" class="coin-header-icon" />
+      <div>
+        <h1><%= name %> <span class="coin-symbol-badge"><%= symbol %></span></h1>
+        <p class="rank">Market cap rank <%= rank %></p>
+      </div>
+    </div>
+
+    <section class="price-block <%= isPositive ? 'glow-positive' : 'glow-negative' %>">
+      <p class="price-label">Current Price (INR)</p>
+      <p class="price"><%= price %></p>
+      <p class="change <%= isPositive ? 'positive' : 'negative' %>">
+        <%= isPositive ? '▲' : '▼' %> <%= change24h %> <span class="change-period">(24h)</span>
+      </p>
+    </section>
+
+    <h2>📊 Market Data</h2>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <p class="stat-label">Market Cap</p>
+        <p class="stat-value"><%= marketCap %></p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">24h High</p>
+        <p class="stat-value stat-up"><%= high24h %></p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">24h Low</p>
+        <p class="stat-value stat-down"><%= low24h %></p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">All-Time High</p>
+        <p class="stat-value"><%= ath %></p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">All-Time Low</p>
+        <p class="stat-value"><%= atl %></p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Circulating Supply</p>
+        <p class="stat-value"><%= circulatingSupply %> <span class="stat-symbol"><%= symbol %></span></p>
+      </div>
+    </div>
+
+    <% if (description && description.trim().length > 0) { %>
+      <h2>📖 About</h2>
+      <p class="description"><%- description %></p>
+    <% } %>
+
+    <footer>
+      <p>Data provided by the free <a href="https://www.coingecko.com/en/api" target="_blank" rel="noopener noreferrer">CoinGecko API</a></p>
+    </footer>
+  </div>
+</body>
+</html>

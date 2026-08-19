@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Lookup</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🌍 Weather Lookup</h1>
+    <p class="subtitle">Search any city to see the current weather and a 5-day forecast.</p>
+
+    <form action="/weather" method="GET" class="search-form">
+      <input
+        type="text"
+        name="city"
+        placeholder="Enter a city name (e.g. Bengaluru, Tokyo, Paris)"
+        required
+      />
+      <button type="submit">Search</button>
+    </form>
+
+    <% if (error) { %>
+      <p class="error-message"><%= error %></p>
+    <% } %>
+
+    <footer>
+      <p>Data provided by the free <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo API</a> (no API key required).</p>
+    </footer>
+  </div>
+</body>
+</html>

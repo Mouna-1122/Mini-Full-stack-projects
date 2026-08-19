@@ -1,0 +1,170 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  display: flex;
+  justify-content: center;
+  padding: 40px 16px;
+}
+
+.container {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 32px 28px;
+  max-width: 560px;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+  margin-top: 0;
+  color: #1a2b4c;
+  font-size: 1.8rem;
+}
+
+.subtitle {
+  color: #5a6b8c;
+  margin-bottom: 24px;
+}
+
+.search-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.search-form input[type="text"] {
+  flex: 1;
+  padding: 12px 14px;
+  border: 1px solid #d0d7e5;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.search-form button {
+  padding: 12px 20px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.15s ease-in-out;
+}
+
+.search-form button:hover {
+  background: #1d4ed8;
+}
+
+.error-message {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 12px 14px;
+  border-radius: 8px;
+  margin-top: 12px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.current-weather {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #f0f6ff;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 16px 0 28px;
+}
+
+.current-icon {
+  font-size: 3.5rem;
+}
+
+.current-temp {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0;
+  color: #1a2b4c;
+}
+
+.current-desc {
+  margin: 2px 0;
+  color: #33415c;
+}
+
+.current-wind {
+  margin: 2px 0;
+  color: #6b7a99;
+  font-size: 0.9rem;
+}
+
+h2 {
+  color: #1a2b4c;
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+.forecast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  gap: 10px;
+}
+
+.forecast-card {
+  background: #f8fafc;
+  border: 1px solid #e5eaf2;
+  border-radius: 10px;
+  padding: 12px 8px;
+  text-align: center;
+}
+
+.forecast-date {
+  font-size: 0.75rem;
+  color: #6b7a99;
+  margin: 0 0 6px;
+}
+
+.forecast-icon {
+  font-size: 1.6rem;
+  margin: 0 0 4px;
+}
+
+.forecast-desc {
+  font-size: 0.7rem;
+  color: #33415c;
+  margin: 0 0 6px;
+  min-height: 28px;
+}
+
+.forecast-temps {
+  font-weight: 600;
+  color: #1a2b4c;
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+footer {
+  margin-top: 28px;
+  font-size: 0.8rem;
+  color: #9aa5b8;
+  text-align: center;
+}
+
+footer a {
+  color: #6b7a99;
+}

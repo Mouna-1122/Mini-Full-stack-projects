@@ -1,0 +1,21 @@
+{
+  "name": "crypto-price-tracker",
+  "version": "1.0.0",
+  "description": "An Express/Node.js app that uses the CoinGecko public API to look up the current price, 24h change, and market data for any cryptocurrency.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": ["express", "axios", "ejs", "public-api", "coingecko", "cryptocurrency"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}

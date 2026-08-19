@@ -1,0 +1,21 @@
+{
+  "name": "weather-lookup-app",
+  "version": "1.0.0",
+  "description": "An Express/Node.js app that uses the Open-Meteo API (geocoding + forecast) to let users look up current weather and a 5-day forecast for any city in the world.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": ["express", "axios", "ejs", "public-api", "open-meteo", "weather"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}

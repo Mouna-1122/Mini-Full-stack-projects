@@ -1,0 +1,491 @@
+/* ============================================
+   Crypto Price Tracker — dark glassmorphism UI
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-base: #0a0a14;
+  --panel: rgba(255, 255, 255, 0.04);
+  --panel-border: rgba(255, 255, 255, 0.08);
+  --panel-hover: rgba(255, 255, 255, 0.07);
+  --text-primary: #f2f2fa;
+  --text-secondary: #9494b8;
+  --text-muted: #6a6a8e;
+  --accent: #7c5cff;
+  --accent-2: #22d3ee;
+  --green: #34d399;
+  --red: #f87171;
+  --radius: 18px;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  display: flex;
+  justify-content: center;
+  padding: 48px 16px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Ambient glow blobs behind everything */
+.bg-glow {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.glow-1 {
+  width: 480px;
+  height: 480px;
+  top: -160px;
+  left: -120px;
+  background: radial-gradient(circle, rgba(124, 92, 255, 0.35), transparent 70%);
+}
+
+.glow-2 {
+  width: 520px;
+  height: 520px;
+  bottom: -200px;
+  right: -160px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.25), transparent 70%);
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  background: var(--panel);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--panel-border);
+  border-radius: 24px;
+  padding: 36px 32px;
+  max-width: 620px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  animation: rise 0.5s ease-out;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Hero / header --- */
+.hero {
+  margin-bottom: 24px;
+}
+
+.badge {
+  display: inline-block;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--accent-2);
+  background: rgba(34, 211, 238, 0.1);
+  border: 1px solid rgba(34, 211, 238, 0.25);
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: 2.1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+/* --- Search form --- */
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--panel-border);
+  border-radius: 14px;
+  padding: 6px 6px 6px 16px;
+  margin-bottom: 14px;
+  transition: border-color 0.2s ease;
+}
+
+.search-form:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.15);
+}
+
+.search-icon {
+  font-size: 0.95rem;
+  opacity: 0.6;
+}
+
+.search-form input[type="text"] {
+  flex: 1;
+  padding: 12px 4px;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+}
+
+.search-form input[type="text"]::placeholder {
+  color: var(--text-muted);
+}
+
+.search-form button {
+  padding: 12px 22px;
+  background: linear-gradient(90deg, var(--accent), #9b7cff);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.search-form button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(124, 92, 255, 0.4);
+}
+
+.search-form button:active {
+  transform: translateY(0);
+}
+
+.error-message {
+  background: rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.25);
+  color: #fca5a5;
+  padding: 12px 14px;
+  border-radius: 12px;
+  margin-top: 4px;
+  font-size: 0.92rem;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: var(--accent-2);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: opacity 0.15s ease;
+}
+
+.back-link:hover {
+  opacity: 0.75;
+}
+
+h2 {
+  color: var(--text-primary);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 26px 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.fire {
+  filter: drop-shadow(0 0 6px rgba(251, 146, 60, 0.6));
+}
+
+/* --- Top coins list (home page) --- */
+.coin-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.coin-row {
+  display: grid;
+  grid-template-columns: 28px 32px 1fr auto auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid transparent;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  opacity: 0;
+  animation: fade-in 0.4s ease forwards;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateX(-6px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.coin-row:hover {
+  background: var(--panel-hover);
+  border-color: var(--panel-border);
+  transform: translateX(2px);
+}
+
+.coin-rank {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.coin-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: white;
+}
+
+.coin-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.coin-symbol {
+  font-weight: 500;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+.coin-price {
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+.coin-change {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.8rem;
+  font-weight: 600;
+  min-width: 78px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.positive {
+  color: var(--green);
+}
+
+.negative {
+  color: var(--red);
+}
+
+/* --- Result page --- */
+.coin-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.coin-header-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: white;
+  padding: 4px;
+  box-shadow: 0 4px 20px rgba(124, 92, 255, 0.25);
+}
+
+.coin-header h1 {
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+.coin-symbol-badge {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-2);
+  background: rgba(34, 211, 238, 0.1);
+  border: 1px solid rgba(34, 211, 238, 0.2);
+  padding: 3px 10px;
+  border-radius: 999px;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+
+.rank {
+  margin: 6px 0 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.price-block {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.price-block.glow-positive {
+  box-shadow: inset 0 0 60px rgba(52, 211, 153, 0.06);
+  border-color: rgba(52, 211, 153, 0.2);
+}
+
+.price-block.glow-negative {
+  box-shadow: inset 0 0 60px rgba(248, 113, 113, 0.06);
+  border-color: rgba(248, 113, 113, 0.2);
+}
+
+.price-label {
+  margin: 0 0 6px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.price {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 2.3rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.change {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 8px 0 0;
+}
+
+.change-period {
+  color: var(--text-muted);
+  font-weight: 400;
+  font-size: 0.85rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.stat-card:hover {
+  background: var(--panel-hover);
+  transform: translateY(-2px);
+}
+
+.stat-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  margin: 0 0 6px;
+}
+
+.stat-value {
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+.stat-up {
+  color: var(--green);
+}
+
+.stat-down {
+  color: var(--red);
+}
+
+.stat-symbol {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.description {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 0.92rem;
+}
+
+.description a {
+  color: var(--accent-2);
+}
+
+footer {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid var(--panel-border);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+footer a {
+  color: var(--text-secondary);
+}
+
+/* --- Responsive --- */
+@media (max-width: 480px) {
+  .container {
+    padding: 26px 20px;
+  }
+
+  h1 {
+    font-size: 1.7rem;
+  }
+
+  .price {
+    font-size: 1.8rem;
+  }
+
+  .coin-row {
+    grid-template-columns: 20px 26px 1fr auto;
+  }
+
+  .coin-change {
+    display: none;
+  }
+}
