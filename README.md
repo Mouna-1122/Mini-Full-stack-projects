@@ -1,12 +1,12 @@
 # 🚀 Mini Full Stack Projects
 
-A collection of full stack web applications built while learning modern web development using the **PERN** and **Node.js** ecosystem.
+A collection of full stack web applications built while learning modern web development using the **PERN stack**, **Node.js**, **Express.js**, and **PostgreSQL**.
 
-> Developed by **Mouna M** | B.Tech CSE
+**Developer:** Mouna M
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠 Tech Stack
 
 - **Frontend:** HTML, CSS, Bootstrap, JavaScript, EJS
 - **Backend:** Node.js, Express.js
@@ -15,89 +15,99 @@ A collection of full stack web applications built while learning modern web deve
 
 ---
 
-## 📂 Projects
-
-| Project | Description | Tech |
-|---------|-------------|------|
-| 🌍 Travel Tracker | Track countries you've visited on an interactive world map using PostgreSQL. | Node.js, Express, PostgreSQL, EJS |
-| ➕ More projects coming soon | This repository will be updated with additional mini full stack applications. | — |
-
----
+# 📂 Projects
 
 ## 🌍 Travel Tracker
 
-A full stack application that allows users to search and save countries they have visited.
+Track countries you've visited on an interactive world map with PostgreSQL.
 
-### Features
+**Features**
+- Search countries
+- Save visited countries
+- Prevent duplicate entries
+- PostgreSQL database integration
 
-- 🔎 Search countries by name
-- 🗺️ Highlight visited countries on a world map
-- 💾 Store data in PostgreSQL
-- ⚠️ Prevent duplicate country entries
-- ❌ Handle invalid country names gracefully
-
-### Folder Structure
-
-```text
-travel-tracker/
-├── public/
-│   ├── styles/
-│   └── images/
-├── views/
-│   └── index.ejs
-├── index.js
-├── package.json
-└── README.md
-```
+**Tech:** Node.js • Express • PostgreSQL • EJS
 
 ---
 
-## ⚙️ Getting Started
+## 🌤 Weather App
 
-### 1. Clone the repository
+A weather application that fetches real-time weather data using an external API.
+
+**Features**
+- Search any city
+- Live weather information
+- Responsive UI
+
+**Tech:** Node.js • Express • API • EJS
+
+---
+
+## 🏳 Country Flags Quiz
+
+A quiz game that tests your knowledge of world flags.
+
+**Features**
+- Random flag questions
+- Score tracking
+- Interactive gameplay
+
+**Tech:** Node.js • Express • PostgreSQL • EJS
+
+---
+
+## 🌎 World Capital Quiz
+
+Guess the capital city of countries around the world.
+
+**Features**
+- Random questions
+- Score counter
+- Database-driven quiz
+
+**Tech:** Node.js • Express • PostgreSQL
+
+---
+
+## 💰 Crypto App
+
+A cryptocurrency tracker displaying market information using a crypto API.
+
+**Features**
+- View cryptocurrency prices
+- API integration
+- Dynamic data rendering
+
+**Tech:** Node.js • Express • REST API
+
+---
+
+## ▶ Getting Started
 
 ```bash
 git clone https://github.com/Mouna-1122/mini-full-stack-projects.git
 ```
 
-### 2. Navigate to a project
+Install dependencies for any project:
 
 ```bash
-cd mini-full-stack-projects/travel-tracker
-```
-
-### 3. Install dependencies
-
-```bash
+cd project-folder
 npm install
-```
-
-### 4. Configure PostgreSQL
-
-Create a database named `world` and update your PostgreSQL credentials inside `index.js`.
-
-### 5. Run the application
-
-```bash
 nodemon index.js
-```
-
-Open:
-
-```text
-http://localhost:3000
 ```
 
 ---
 
-## 📚 What I'm Learning
+## 📚 Learning Outcomes
 
-- REST APIs
+- REST API Integration
 - CRUD Operations
 - PostgreSQL Queries
 - Express.js Routing
 - EJS Templating
-- Authentication (upcoming)
+- Backend Development
+- Git & GitHub Workflow
 
 ---
 
@@ -106,8 +116,8 @@ http://localhost:3000
 **Mouna M**
 
 - GitHub: https://github.com/Mouna-1122
-- LinkedIn: www.linkedin.com/in/mouna-m-651b01288
+- LinkedIn: https://www.linkedin.com/in/mouna-m-651b01288
 
 ---
 
-⭐ If you like these projects, consider giving this repository a star!
+⭐ Feel free to explore the projects and follow my learning journey!
