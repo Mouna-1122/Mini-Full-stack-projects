@@ -1,8 +1,0 @@
-node_modules/
-.env
-solution.js
-*.log
-travel-tracker/solution1.js
-travel-tracker/solution2.js
-travel-tracker/solution3.js
-travel-tracker/solution4.js
