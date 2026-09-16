@@ -93,6 +93,3 @@ http://localhost:3000
 
 CoinGecko's free public API has a fairly generous but not unlimited rate limit. If you search very rapidly and see errors, wait a few seconds and try again.
 
-## License
-
-ISC — free to use for learning purposes.
