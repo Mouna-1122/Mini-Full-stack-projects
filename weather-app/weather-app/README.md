@@ -86,6 +86,4 @@ http://localhost:3000
 - **404 routes** — any unmatched route renders a styled error page instead of Express's default HTML error.
 - **Unhandled server errors** — caught by a final Express error-handling middleware in `index.js`.
 
-## License
 
-ISC — free to use for learning purposes.
